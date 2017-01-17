@@ -1,0 +1,23 @@
+<form method="post" name="login_form" action="{{ path('rebl_register') }}">
+    <div class="form-control">
+        <label for="username">Username</label>
+        {{ form_widget(register_form.username) }}
+    </div>
+
+    <div class="form-control">
+        <label for="password">Password</label>
+        {{ form_widget(register_form.plainPassword.first) }}
+    </div>
+
+    <div class="form-control">
+        <label for="password">Repeat password</label>
+        {{ form_widget(register_form.plainPassword.second) }}
+    </div>
+
+    <div class="form-control">
+        <input type="submit" value="Register" />
+    </div>
+
+    {{ form_errors(register_form) }}
+
+</form>

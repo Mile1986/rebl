@@ -1,0 +1,5 @@
+SecureBundle\Entity\User:
+    properties:
+        username:
+            - Email:
+                message: Invalid email. Please, provide a valid email address

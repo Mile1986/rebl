@@ -1,0 +1,4 @@
+services:
+#    kernel_api.example:
+#        class: KernelApiBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

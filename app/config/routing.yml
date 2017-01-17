@@ -1,0 +1,7 @@
+secure:
+    resource: "@SecureBundle/Resources/config/routing.yml"
+    prefix:   /
+
+main_entry:
+    resource: "@MainEntryBundle/Resources/config/routing.yml"
+    prefix:   /

@@ -1,0 +1,10 @@
+rebl_homepage:
+    path:     /
+    defaults: { _controller: MainEntryBundle:Home:home }
+    methods: [GET]
+
+rebl_register:
+    path: /register
+    defaults: { _controller: MainEntryBundle:Security:register }
+    methods: [GET, POST]
+

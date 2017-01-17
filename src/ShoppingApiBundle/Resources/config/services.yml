@@ -1,0 +1,4 @@
+services:
+#    shopping_api.example:
+#        class: ShoppingApiBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]
