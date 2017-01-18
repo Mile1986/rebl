@@ -2,6 +2,7 @@
 
 namespace SecureBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 class User implements UserInterface, \Serializable
@@ -35,6 +36,17 @@ class User implements UserInterface, \Serializable
      */
     private $trial = true;
     /**
+     * @var string $accountType
+     */
+    private  $accountType = 'trial';
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        $this->roles = new ArrayCollection();
+    }
+    /**
      * @return int
      */
     public function getId()
@@ -48,22 +60,37 @@ class User implements UserInterface, \Serializable
     {
         $this->id = $id;
     }
-
-    public function addRole(string $role)
+    /**
+     * @param Role $role
+     * @return UserInterface
+     */
+    public function addRole(Role $role) : UserInterface
     {
+        if (!$this->hasRole($role)) {
+            return $this;
+        }
 
+        $role->setUser($this);
+        $this->roles->add($role);
     }
     /**
-     * @param array $roles
+     * @param Role $input
+     * @return bool
      */
-    public function setRoles(array $roles)
+    public function hasRole(Role $input)
     {
-        $this->roles = $roles;
+        foreach ($this->roles as $role) {
+            if ($role->getType() === $input) {
+                return true;
+            }
+        }
+
+        return false;
     }
     /**
      * @return array
      */
-    public function getRoles() : array
+    public function getRoles()
     {
         return $this->roles;
     }
@@ -131,6 +158,7 @@ class User implements UserInterface, \Serializable
             $this->id,
             $this->username,
             $this->password,
+            $this->roles
         ));
     }
     /**
@@ -141,7 +169,8 @@ class User implements UserInterface, \Serializable
         list (
             $this->id,
             $this->username,
-            $this->password
+            $this->password,
+            $this->roles
             ) = unserialize($serialized);
     }
     /**
@@ -170,6 +199,15 @@ class User implements UserInterface, \Serializable
      */
     public function setTrial(bool $trial)
     {
+         $this->accountType = 'trial';
+
         $this->trial = $trial;
+    }
+    /**
+     * @return string
+     */
+    public function getAccountType() : string
+    {
+        return $this->accountType;
     }
 }

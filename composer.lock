@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "404e4bcef976da5763cbb16a230d697f",
+    "content-hash": "ec09e69c1db15f378b1baa8fe051ca73",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1090,6 +1090,55 @@
             ],
             "description": "API building tool",
             "time": "2017-01-15T12:10:56+00:00"
+        },
+        {
+            "name": "mario-legenda/blue-dot",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MarioLegenda/blue-dot.git",
+                "reference": "60f27f16987ff7f8e98dc6d89b3d8a0ac0572888"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MarioLegenda/blue-dot/zipball/60f27f16987ff7f8e98dc6d89b3d8a0ac0572888",
+                "reference": "60f27f16987ff7f8e98dc6d89b3d8a0ac0572888",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/config": "^3.1",
+                "symfony/yaml": "^3.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.8.*",
+                "raveren/kint": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "BlueDot": "src/",
+                    "Test": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mario Skrlec",
+                    "email": "whitepostmail@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Pure Sql Database abstraction layer",
+            "keywords": [
+                "abstraction",
+                "database",
+                "mysql",
+                "sql"
+            ],
+            "time": "2016-11-22T22:08:10+00:00"
         },
         {
             "name": "mario-legenda/ebay-finding-api",

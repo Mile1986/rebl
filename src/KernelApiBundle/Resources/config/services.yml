@@ -2,3 +2,6 @@ services:
 #    kernel_api.example:
 #        class: KernelApiBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    blue_dot:
+        class: BlueDot\BlueDot
+        arguments: ["%blue_dot_config%]

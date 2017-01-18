@@ -1,0 +1,31 @@
+configuration:
+    connection:
+        host: 127.0.0.1
+        database_name: 'rebl'
+        user: 'root'
+        password: 'root'
+
+    simple:
+        select:
+            find_user_by_username:
+                sql: "SELECT * FROM users WHERE username = :username"
+                parameters: [username]
+
+    scenario:
+        create_user:
+            atomic: true
+            rules: { return_entity: false }
+            return_entity: []
+            statements:
+                select_account:
+                    sql: "SELECT * FROM account WHERE type = :type"
+                    parameters: [type]
+                create_user:
+                    sql: "INSERT INTO users (username, password, account_id) VALUES (:username, :account_id, :password)"
+                    parameters: [username, password]
+                    use:
+                        statement_name: select_account
+                        values: { select_account.id : account_id }
+                create_role:
+                    sql: "INSERT INTO roles (role) VALUES (:role)"
+                    parameters: [role]
